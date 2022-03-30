@@ -11,4 +11,15 @@ entries:
     urls:
     - https://github.com/janekbaraniewski/charts/releases/download/example-chart-0.1.0/example-chart-0.1.0.tgz
     version: 0.1.0
+  kubeserial:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2022-03-30T22:04:10.442890059Z"
+    description: A Helm chart for Kubernetes
+    digest: 06001ebaa416da93ae06d6d745c8abb200212a9a0509ca91e0b5cc5cc4c881bb
+    name: kubeserial
+    type: application
+    urls:
+    - https://github.com/janekbaraniewski/charts/releases/download/kubeserial-0.1.1/kubeserial-0.1.1.tgz
+    version: 0.1.1
 generated: "2022-03-30T21:30:22.233507073Z"
