@@ -1,9 +1,0 @@
-apiVersion: v2
-name: kubeserial
-description: Kubeserial helps you manage and use serial devices in Kubernetes
-type: application
-version: "crds-0.0.1"
-appVersion: "crds-0.0.1"
-maintainers:
-  - name: janekbaraniewski
-    url: https://github.com/janekbaraniewski
