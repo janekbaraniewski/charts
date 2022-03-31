@@ -14,17 +14,4 @@ entries:
     urls:
     - https://github.com/janekbaraniewski/charts/releases/download/kubeserial-0.1.0/kubeserial-0.1.0.tgz
     version: 0.1.0
-  - apiVersion: v2
-    appVersion: crds-0.0.1
-    created: "2022-03-31T13:11:11.960543313Z"
-    description: Kubeserial helps you manage and use serial devices in Kubernetes
-    digest: fb4dd26ca050783e75c899aeda183d8fee334143d03ea3223a6c5b0b14e4cd44
-    maintainers:
-    - name: janekbaraniewski
-      url: https://github.com/janekbaraniewski
-    name: kubeserial
-    type: application
-    urls:
-    - https://github.com/janekbaraniewski/charts/releases/download/kubeserial-crds-0.0.1/kubeserial-crds-0.0.1.tgz
-    version: crds-0.0.1
 generated: "2022-03-30T21:30:22.233507073Z"
