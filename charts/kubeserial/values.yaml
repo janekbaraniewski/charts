@@ -3,7 +3,10 @@ replicaCount: 1
 image:
   repository: janekbaraniewski/kubeserial
   pullPolicy: IfNotPresent
-  tag: "0.1.0"
+  tag: "crds-0.0.1"
+
+service:
+  type: ClusterIP
 
 imagePullSecrets: []
 nameOverride: ""
