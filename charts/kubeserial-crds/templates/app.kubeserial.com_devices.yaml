@@ -10,20 +10,20 @@ metadata:
     app.kubernetes.io/name: '{{ include "kubeserial-crds.name" . }}'
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     helm.sh/chart: '{{ include "kubeserial-crds.chart" . }}'
-  name: kubeserials.app.kubeserial.com
+  name: devices.app.kubeserial.com
 spec:
   group: app.kubeserial.com
   names:
-    kind: KubeSerial
-    listKind: KubeSerialList
-    plural: kubeserials
-    singular: kubeserial
+    kind: Device
+    listKind: DeviceList
+    plural: devices
+    singular: device
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: KubeSerial is the Schema for the kubeserials API
+        description: Device is the Schema for the devices API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -38,53 +38,70 @@ spec:
           metadata:
             type: object
           spec:
-            description: KubeSerialSpec defines the desired state of KubeSerial
+            description: DeviceSpec defines the desired state of Device
             properties:
-              devices:
-                items:
-                  description: Device defines monitored device
-                  properties:
-                    idProduct:
-                      type: string
-                    idVendor:
-                      type: string
-                    manager:
-                      type: string
-                    name:
-                      type: string
-                    subsystem:
-                      type: string
-                  required:
-                  - idProduct
-                  - idVendor
-                  - manager
-                  - name
-                  - subsystem
-                  type: object
-                type: array
-              ingress:
-                description: IngressSpec defines the desired Ingress configuration
-                properties:
-                  annotations:
-                    additionalProperties:
-                      type: string
-                    type: object
-                  domain:
-                    type: string
-                  enabled:
-                    type: boolean
-                required:
-                - enabled
-                type: object
+              idProduct:
+                type: string
+              idVendor:
+                type: string
+              manager:
+                type: string
+              name:
+                type: string
+              subsystem:
+                type: string
             required:
-            - devices
-            - ingress
+            - idProduct
+            - idVendor
+            - manager
+            - name
+            - subsystem
             type: object
           status:
-            description: KubeSerialStatus defines the observed state of KubeSerial
+            description: DeviceStatus defines the observed state of Device
+            properties:
+              conditions:
+                items:
+                  properties:
+                    lastHeartbeatTime:
+                      format: date-time
+                      type: string
+                    lastTransitionTime:
+                      format: date-time
+                      type: string
+                    message:
+                      description: message is a human readable message indicating
+                        details about the transition. This may be an empty string.
+                      maxLength: 32768
+                      type: string
+                    observedGeneration:
+                      format: int64
+                      minimum: 0
+                      type: integer
+                    reason:
+                      maxLength: 1024
+                      minLength: 1
+                      pattern: ^[A-Za-z]([A-Za-z0-9_,:]*[A-Za-z0-9_])?$
+                      type: string
+                    status:
+                      enum:
+                      - 'True'
+                      - 'False'
+                      - Unknown
+                      type: string
+                    type:
+                      type: string
+                  required:
+                  - lastTransitionTime
+                  - message
+                  - reason
+                  - status
+                  - type
+                  type: object
+                type: array
+            required:
+            - conditions
             type: object
-        required:
-        - spec
         type: object
     served: true
     storage: true

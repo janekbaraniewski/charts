@@ -10,20 +10,20 @@ metadata:
     app.kubernetes.io/name: '{{ include "kubeserial-crds.name" . }}'
     app.kubernetes.io/version: '{{ .Chart.AppVersion }}'
     helm.sh/chart: '{{ include "kubeserial-crds.chart" . }}'
-  name: kubeserials.app.kubeserial.com
+  name: managers.app.kubeserial.com
 spec:
   group: app.kubeserial.com
   names:
-    kind: KubeSerial
-    listKind: KubeSerialList
-    plural: kubeserials
-    singular: kubeserial
+    kind: Manager
+    listKind: ManagerList
+    plural: managers
+    singular: manager
   scope: Namespaced
   versions:
   - name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: KubeSerial is the Schema for the kubeserials API
+        description: Manager is the Schema for the managers API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation
@@ -38,53 +38,34 @@ spec:
           metadata:
             type: object
           spec:
-            description: KubeSerialSpec defines the desired state of KubeSerial
+            description: ManagerSpec defines the desired state of Manager
             properties:
-              devices:
-                items:
-                  description: Device defines monitored device
-                  properties:
-                    idProduct:
-                      type: string
-                    idVendor:
-                      type: string
-                    manager:
-                      type: string
-                    name:
-                      type: string
-                    subsystem:
-                      type: string
-                  required:
-                  - idProduct
-                  - idVendor
-                  - manager
-                  - name
-                  - subsystem
-                  type: object
-                type: array
-              ingress:
-                description: IngressSpec defines the desired Ingress configuration
+              config:
+                type: string
+              configPath:
+                type: string
+              image:
+                description: Image is spec for image to be used by manager
                 properties:
-                  annotations:
-                    additionalProperties:
-                      type: string
-                    type: object
-                  domain:
+                  repository:
                     type: string
-                  enabled:
-                    type: boolean
+                  tag:
+                    type: string
                 required:
-                - enabled
+                - repository
+                - tag
                 type: object
+              runcmd:
+                type: string
             required:
-            - devices
-            - ingress
+            - config
+            - configPath
+            - image
+            - runcmd
             type: object
           status:
-            description: KubeSerialStatus defines the observed state of KubeSerial
+            description: ManagerStatus defines the observed state of Manager
             type: object
-        required:
-        - spec
         type: object
     served: true
     storage: true
