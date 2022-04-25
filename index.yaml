@@ -1,5 +1,19 @@
 apiVersion: v1
 entries:
+  kubeserial:
+  - apiVersion: v2
+    appVersion: 0.1.1
+    created: "2022-04-25T21:19:37.296171972Z"
+    description: Kubeserial helps you manage and use serial devices in Kubernetes
+    digest: a7667fbba8b59ffc52ad3978050fcb40ad953077d727d373be9c36e24da11f44
+    maintainers:
+    - name: janekbaraniewski
+      url: https://github.com/janekbaraniewski
+    name: kubeserial
+    type: application
+    urls:
+    - https://github.com/janekbaraniewski/charts/releases/download/kubeserial-0.1.1/kubeserial-0.1.1.tgz
+    version: 0.1.1
   kubeserial-crds:
   - apiVersion: v2
     appVersion: 0.0.2
