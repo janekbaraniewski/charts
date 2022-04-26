@@ -1,9 +1,12 @@
 replicaCount: 1
 
+kubeserial:
+  devices: []
+
 image:
   repository: janekbaraniewski/kubeserial
   pullPolicy: IfNotPresent
-  tag: "0.1.4"
+  tag: "0.1.5"
 
 service:
   type: ClusterIP
