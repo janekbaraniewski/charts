@@ -5,20 +5,30 @@ metadata:
     controller-gen.kubebuilder.io/version: v0.8.0
   creationTimestamp: null
   labels: {{ include "kubeserial-crds.labels" . | nindent 4 }}
-  name: managers.app.kubeserial.com
+  name: managerschedulerequests.app.kubeserial.com
 spec:
   group: app.kubeserial.com
   names:
-    kind: Manager
-    listKind: ManagerList
-    plural: managers
-    singular: manager
+    kind: ManagerScheduleRequest
+    listKind: ManagerScheduleRequestList
+    plural: managerschedulerequests
+    singular: managerschedulerequest
   scope: Namespaced
   versions:
-  - name: v1alpha1
+  - additionalPrinterColumns:
+    - jsonPath: .spec.device
+      name: Device
+      type: string
+    - jsonPath: .spec.manager
+      name: Manager
+      type: string
+    - jsonPath: .status.fulfilled
+      name: Fulfilled
+      type: boolean
+    name: v1alpha1
     schema:
       openAPIV3Schema:
-        description: Manager is the Schema for the managers API
+        description: ManagerScheduleRequest is the Schema for the managerschedulerequests API
         properties:
           apiVersion:
             description: 'APIVersion defines the versioned schema of this representation of an object. Servers should convert recognized schemas to the latest internal value, and may reject unrecognized values. More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#resources'
@@ -29,33 +39,24 @@ spec:
           metadata:
             type: object
           spec:
-            description: ManagerSpec defines the desired state of Manager
+            description: ManagerScheduleRequestSpec defines the desired state of ManagerScheduleRequest
             properties:
-              config:
+              device:
                 type: string
-              configPath:
-                type: string
-              image:
-                description: Image is spec for image to be used by manager
-                properties:
-                  repository:
-                    type: string
-                  tag:
-                    type: string
-                required:
-                - repository
-                - tag
-                type: object
-              runCmd:
+              manager:
                 type: string
             required:
-            - config
-            - configPath
-            - image
-            - runCmd
+            - device
+            - manager
             type: object
           status:
-            description: ManagerStatus defines the observed state of Manager
+            description: ManagerScheduleRequestStatus defines the observed state of ManagerScheduleRequest
+            properties:
+              fulfilled:
+                default: false
+                type: boolean
+            required:
+            - fulfilled
             type: object
         type: object
     served: true
