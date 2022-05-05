@@ -11,12 +11,16 @@ webhook:
   image:
     repository: janekbaraniewski/kubeserial-injector-webhook
     pullPolicy: IfNotPresent
-    tag: "0.1.6"
+    tag: "0.1.7"
 
 image:
   repository: janekbaraniewski/kubeserial
   pullPolicy: IfNotPresent
-  tag: "0.1.6"
+  tag: "0.1.7"
+
+monitoring:
+  prometheusMonitors:
+    enabled: false
 
 imagePullSecrets: []
 nameOverride: ""
