@@ -5,7 +5,4 @@ metadata:
   labels:
     {{- include "kubeserial.labels" . | nindent 4 }}
 data:
-  monitorLabels: |
-    {{- include "kubeserial.monitorLabels" . | nindent 4 }}
-  monitorSelectorLabels: |
-    {{- include "kubeserial.monitorSelectorLabels" . | nindent 4 }}
+  monitor-spec.yaml: {{ tpl (.Files.Get "specs/device-monitor.yaml" ) . | toYaml | nindent 4 }}

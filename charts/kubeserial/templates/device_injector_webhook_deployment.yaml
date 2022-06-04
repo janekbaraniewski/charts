@@ -21,7 +21,6 @@ spec:
           imagePullPolicy: {{ .Values.webhook.image.pullPolicy }}
           args:
             - -certDir=/etc/webhook/certs
-            - -sidecarConfig=/etc/webhook/config/sidecarconfig.yaml
             - -port=8443
           volumeMounts:
             - name: webhook-certs
@@ -29,6 +28,22 @@ spec:
               readOnly: true
             - name: webhook-config
               mountPath: /etc/webhook/config
+          ports:
+            - name: webhook
+              containerPort: 8443
+              protocol: TCP
+            - name: health
+              containerPort: 8081
+            - name: metrics
+              containerPort: 8080
+          livenessProbe:
+            httpGet:
+              port: health
+              path: /healthz
+          readinessProbe:
+            httpGet:
+              port: health
+              path: /readyz
       volumes:
         - name: webhook-certs
           secret:

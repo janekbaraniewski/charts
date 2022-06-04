@@ -29,15 +29,18 @@ $ helm upgrade --install kubeserial baraniewski/kubeserial
 |kubeserial.devices|`[]`|List of device configuration to create when installing|false|
 |certManagerIssuer.name|||true|
 |certManagerIssuer.kind|`Issuer`||true|
-|webhook.image.repository|`janekbaraniewski/kubeserial-injector-webhook`||true|
-|webhook.image.pullPolicy|`IfNotPresent`||true|
-|webhook.image.tag|`0.1.8`||true|
 |image.repository|`janekbaraniewski/kubeserial`||true|
 |image.pullPolicy|`IfNotPresent`||true|
-|image.tag|`0.1.8`||true|
+|image.tag|`0.2.0`||true|
+|monitor.image.repository|`janekbaraniewski/kubeserial-device-monitor`||true|
+|monitor.image.pullPolicy|`IfNotPresent`||true|
+|monitor.image.tag|`0.2.0`||true|
+|monitor.resources|`{}`||true|
+|webhook.image.repository|`janekbaraniewski/kubeserial-injector-webhook`||true|
+|webhook.image.pullPolicy|`IfNotPresent`||true|
+|webhook.image.tag|`0.2.0`||true|
 |monitoring.prometheusMonitors.enabled|`true`||true|
 
 
 [comment]: # (Links)
 [kubeserial]: https://github.com/janekbaraniewski/kubeserial
-
