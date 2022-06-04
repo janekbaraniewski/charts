@@ -107,6 +107,19 @@ entries:
     version: 0.1.1
   kubeserial-crds:
   - apiVersion: v2
+    appVersion: 0.1.0
+    created: "2022-06-04T16:47:01.23638556Z"
+    description: CRDs for Kubeserial
+    digest: 36aaa2ef8bfbff2515fa5f37eb9a2c15d5a890168f604a2ec0cacb151ac0e296
+    maintainers:
+    - name: janekbaraniewski
+      url: https://github.com/janekbaraniewski
+    name: kubeserial-crds
+    type: application
+    urls:
+    - https://github.com/janekbaraniewski/charts/releases/download/kubeserial-crds-0.1.0/kubeserial-crds-0.1.0.tgz
+    version: 0.1.0
+  - apiVersion: v2
     appVersion: 0.0.5
     created: "2022-05-09T09:23:14.691499798Z"
     description: CRDs for Kubeserial
