@@ -31,14 +31,14 @@ $ helm upgrade --install kubeserial baraniewski/kubeserial
 |certManagerIssuer.kind|`Issuer`||true|
 |image.repository|`janekbaraniewski/kubeserial`||true|
 |image.pullPolicy|`IfNotPresent`||true|
-|image.tag|`0.2.0`||true|
+|image.tag|`0.2.1`||true|
 |monitor.image.repository|`janekbaraniewski/kubeserial-device-monitor`||true|
 |monitor.image.pullPolicy|`IfNotPresent`||true|
-|monitor.image.tag|`0.2.0`||true|
+|monitor.image.tag|`0.2.1`||true|
 |monitor.resources|`{}`||true|
 |webhook.image.repository|`janekbaraniewski/kubeserial-injector-webhook`||true|
 |webhook.image.pullPolicy|`IfNotPresent`||true|
-|webhook.image.tag|`0.2.0`||true|
+|webhook.image.tag|`0.2.1`||true|
 |monitoring.prometheusMonitors.enabled|`true`||true|
 
 

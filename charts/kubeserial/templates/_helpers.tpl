@@ -115,3 +115,57 @@ Device Monitor selector labels
 app.kubernetes.io/name: {{ include "kubeserial.monitorFullname" . }}
 app.kubernetes.io/instance: {{ .Release.Name }}
 {{- end }}
+
+{{/*
+Device Gateway fullname
+*/}}
+{{- define "kubeserial.gatewayFullname" -}}
+{{ include "kubeserial.fullname" .}}-gateway
+{{- end }}
+
+{{/*
+Device Gateway common labels
+*/}}
+{{- define "kubeserial.gatewayLabels" -}}
+helm.sh/chart: {{ include "kubeserial.chart" . }}
+{{ include "kubeserial.gatewaySelectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Device Gateway selector labels
+*/}}
+{{- define "kubeserial.gatewaySelectorLabels" -}}
+app.kubernetes.io/name: {{ include "kubeserial.gatewayFullname" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}
+
+{{/*
+Device Manager fullname
+*/}}
+{{- define "kubeserial.managerFullname" -}}
+{{ include "kubeserial.fullname" .}}-TODO-manager
+{{- end }}
+
+{{/*
+Device Manager common labels
+*/}}
+{{- define "kubeserial.managerLabels" -}}
+helm.sh/chart: {{ include "kubeserial.chart" . }}
+{{ include "kubeserial.managerSelectorLabels" . }}
+{{- if .Chart.AppVersion }}
+app.kubernetes.io/version: {{ .Chart.AppVersion | quote }}
+{{- end }}
+app.kubernetes.io/managed-by: {{ .Release.Service }}
+{{- end }}
+
+{{/*
+Device Manager selector labels
+*/}}
+{{- define "kubeserial.managerSelectorLabels" -}}
+app.kubernetes.io/name: {{ include "kubeserial.managerFullname" . }}
+app.kubernetes.io/instance: {{ .Release.Name }}
+{{- end }}

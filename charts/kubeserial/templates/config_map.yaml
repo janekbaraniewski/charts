@@ -5,4 +5,9 @@ metadata:
   labels:
     {{- include "kubeserial.labels" . | nindent 4 }}
 data:
-  monitor-spec.yaml: {{ tpl (.Files.Get "specs/device-monitor.yaml" ) . | toYaml | nindent 4 }}
+{{- $currentScope := .}}
+{{- range $path, $_ :=  .Files.Glob  "specs/**.yaml" }}
+    {{- with $currentScope}}
+  {{ $path | base }}: {{ tpl (.Files.Get $path) . | toYaml | nindent 4 }}
+    {{- end }}
+{{ end }}

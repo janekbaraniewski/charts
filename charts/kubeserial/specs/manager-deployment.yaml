@@ -1,0 +1,40 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  labels: {{ include "kubeserial.managerLabels" . | nindent 4 }}
+  name: {{ include "kubeserial.managerFullname" . }}
+  namespace: {{ .Release.Namespace }}
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {{ include "kubeserial.managerSelectorLabels" . | nindent 6 }}
+  strategy:
+    rollingUpdate:
+      maxSurge: 25%
+      maxUnavailable: 0%
+    type: RollingUpdate
+  template:
+    metadata:
+      labels: {{ include "kubeserial.managerLabels" . | nindent 8 }}
+      name: {{ include "kubeserial.managerFullname" . }}
+      namespace: {{ .Release.Namespace }}
+    spec:
+      containers:
+      - args: []
+        command:
+        - /bin/sh
+        image: TODO
+        imagePullPolicy: IfNotPresent
+        name: manager
+        ports:
+        - containerPort: 80
+          name: http
+          protocol: TCP
+        resources: {}
+        terminationMessagePath: /dev/termination-log
+        terminationMessagePolicy: File
+      dnsPolicy: ClusterFirst
+      restartPolicy: Always
+      schedulerName: default-scheduler
+      securityContext: {}
+      terminationGracePeriodSeconds: 30
