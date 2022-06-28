@@ -11,19 +11,19 @@ webhook:
   image:
     repository: janekbaraniewski/kubeserial-injector-webhook
     pullPolicy: IfNotPresent
-    tag: "0.2.1"
+    tag: "0.2.2"
 
 monitor:
   image:
     repository: janekbaraniewski/kubeserial-device-monitor
     pullPolicy: IfNotPresent
-    tag: "0.2.1"
+    tag: "0.2.2"
   resources: {}
 
 image:
   repository: janekbaraniewski/kubeserial
   pullPolicy: IfNotPresent
-  tag: "0.2.1"
+  tag: "0.2.2"
 
 monitoring:
   prometheusMonitors:
